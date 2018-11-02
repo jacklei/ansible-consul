@@ -32,9 +32,6 @@
       - "{{ consul_data_dir }}"
       - "{{ consul_user_home }}/bin"
 
-  - stat: path="{{ consul_user_home }}/bin/consul"
-    register: consul_bin
-
   - name: Fetch Consul
     unarchive:
       src: "{{ consul_uri }}"
@@ -42,7 +39,6 @@
       remote_src: true
     become: true
     become_user: "{{ consul_user_name }}"
-    when: not consul_bin.stat.exists
 
   - include: config.yml
     with_dict: "{{  consul_configs  }}"
