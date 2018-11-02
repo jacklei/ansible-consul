@@ -32,9 +32,6 @@
       - "{{ consul_data_dir }}"
       - "{{ consul_user_home }}/bin"
 
-  - stat: path="{{ consul_user_home }}/bin/consul"
-    register: consul_bin
-
   - name: Fetch Consul
     unarchive:
       src: "{{ consul_uri }}"
