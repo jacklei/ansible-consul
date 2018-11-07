@@ -4,7 +4,7 @@
     group:
       name: "{{ consul_group_name }}"
       gid: "{{ consul_group_gid }}"
-      system: true
+      system: yes
       state: present
 
   - name: Ensure Consul service user exists
@@ -13,7 +13,7 @@
       uid: "{{ consul_user_uid }}"
       group: "{{ consul_group_name }}"
       home: "{{ consul_user_home }}"
-      system: true
+      system: yes
       state: present
 
   - name: Ensure unzip is installed
@@ -58,7 +58,7 @@
   - name: Reload Consul service config
     systemd:
       name: consul
-      daemon_reload: true
+      daemon_reload: yes
     when: consul_svc_manifest.changed
 
   - name: Ensure the Consul service is running
