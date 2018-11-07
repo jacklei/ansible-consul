@@ -6,6 +6,7 @@
       gid: "{{ consul_group_gid }}"
       system: yes
       state: present
+      shell: /usr/bin/false
 
   - name: Ensure Consul service user exists
     user:
@@ -15,6 +16,7 @@
       home: "{{ consul_user_home }}"
       system: yes
       state: present
+      shell: /usr/bin/false
 
   - name: Ensure unzip is installed
     package:
